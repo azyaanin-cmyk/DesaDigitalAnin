@@ -8,5 +8,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FamilyMember extends Model
 {
-    use SoftDeletes, UUID
+    use SoftDeletes, UUID;
+protected $table = [
+        'head_of_family_id',
+        'user_id',
+        'profile_picture',
+        'identify_number',
+        'gender',
+        'date_of_birth',
+        'phone_number',
+        'occupation',
+        'marital_status',
+    ];
+
+    public function headOfFamily()
+    {
+        return $this->belongsTo(HeadOfFamily::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
